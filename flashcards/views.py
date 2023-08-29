@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Flashcard
-from .forms import FlashcardForm
+from .models import Flashcard, Deck
+from .forms import FlashcardForm, DeckForm
+
 
 # Create your views here.
 def flashcard_list(request):
@@ -34,3 +35,24 @@ def flashcard_edit(request, pk):
     else:
         form = FlashcardForm(instance=flashcard)
     return render(request, 'flashcard_edit.html', {'form': form})
+
+
+def deck_new(request):
+    if request.method == "POST":
+        form = DeckForm(request.POST)
+        if form.is_valid():
+            deck = form.save()
+            return redirect('deck_detail', pk=deck.pk)
+    else:
+        form = DeckForm()
+        return render(request, 'deck_new.html', {'form': form})
+
+
+def deck_detail(request, pk):
+    deck = get_object_or_404(Deck, pk=pk)
+    return render(request, 'deck_detail.html', {'deck': deck})
+
+
+def deck_list(request):
+    decks = Flashcard.objects.filter()
+    return render(request, 'deck_list.html', {'deck'})

@@ -24,4 +24,7 @@ urlpatterns = [
     path('flashcards/<int:pk>', views.flashcard_answer, name='flashcard_answer'),
     path('flashcard/new', views.flashcard_new, name='flashcard_new'),
     path('flashcard/<int:pk>/edit', views.flashcard_edit, name='flashcard_edit'),
+    path('deck/new', views.deck_new, name="deck_new"),
+    path('deck/<int:pk>/detail', views.deck_detail, name='deck_detail'),
+    path('deck/list', views.deck_list, name="deck_list")
 ]

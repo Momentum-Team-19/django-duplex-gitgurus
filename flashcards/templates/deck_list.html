@@ -1,19 +1,17 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Flashcards</title>
+    <title>Document</title>
 </head>
 <body>
     <h1>Flashcards</h1>
     <ul class="flashcard-list">
-        {% for flashcard in flashcards %}
+        {% for deck in decks %}
         <li class="flashcard-box">
             <div class="flashcard-info">
-                <a style="text-decoration: none" href="{% url 'flashcard_answer' flashcard.pk %}">{{ flashcard.question }}</a>
+                <a style="text-decoration: none" href="{% url 'deck_detail' %}">{{ deck.category }}</a>
         </div>
         </li>
     {% endfor %}
