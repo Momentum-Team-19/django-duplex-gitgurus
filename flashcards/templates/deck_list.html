@@ -1,8 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Document</title>
 </head>
 <body>
@@ -11,11 +13,10 @@
         {% for deck in decks %}
         <li class="flashcard-box">
             <div class="flashcard-info">
-                <a style="text-decoration: none" href="{% url 'deck_detail' %}">{{ deck.category }}</a>
-        </div>
+                <a style="text-decoration: none" href="{% url 'deck_detail' deck.pk %}">{{ deck.category }}</a>
+            </div>
         </li>
-    {% endfor %}
-
+        {% endfor %}
     </ul>
 <a style="text-decoration: none" href="{% url 'flashcard_new' %}" class="button">Create Flashcard</a>
 </body>
