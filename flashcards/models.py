@@ -20,7 +20,7 @@ class Deck(models.Model):
         for card in deck.flashcards.all():
             if card.correct:
                 right_answers += 1
-            elif not card.correct:
+            elif card.correct == False:
                 wrong_answers += 1
             else:
                 not_answered += 1
