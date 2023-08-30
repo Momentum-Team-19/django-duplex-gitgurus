@@ -11,6 +11,7 @@
     <div class="flashcard-box">
         <div class="flashcard-info">
             {{ deck.category }}
+            <p>Number right:{{ right }}</p>
         </div>
     </div>
     <div><ul class="flashcard-list">
@@ -18,7 +19,8 @@
         <li class="flashcard-box">
             <div class="flashcard-info">
                 <a style="text-decoration: none" href="{% url 'flashcard_answer' flashcard.pk %}">{{ flashcard.question }}</a>
-        </div>
+                <p></p>
+            </div>
         </li>
     {% endfor %}
 

@@ -11,18 +11,31 @@ class Deck(models.Model):
 
     def __str__(self):
         return self.category
-    
+
+    @property
+    def get_score(deck):
+        right_answers = 0
+        wrong_answers = 0
+        not_answered = 0
+        for card in deck.flashcards.all():
+            if card.correct:
+                right_answers += 1
+            elif not card.correct:
+                wrong_answers += 1
+            else:
+                not_answered += 1
+        return (right_answers, wrong_answers, not_answered)
+ 
 
 class Flashcard(models.Model):
     question = models.TextField()
     answer = models.TextField()
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE, related_name="flashcards", blank=True, null=True)
-    right_answers = models.PositiveIntegerField(default=0)
-    wrong_answers = models.PositiveIntegerField(default=0)
+    correct = models.BooleanField(blank=True, null=True)
 
     def __str__(self):
         return self.question
-    
+
 
 class User(AbstractUser):
     pass
