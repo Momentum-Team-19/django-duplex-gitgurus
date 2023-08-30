@@ -54,5 +54,5 @@ def deck_detail(request, pk):
 
 
 def deck_list(request):
-    decks = Flashcard.objects.filter()
+    decks = Deck.objects.all()
     return render(request, 'deck_list.html', {'decks': decks})
