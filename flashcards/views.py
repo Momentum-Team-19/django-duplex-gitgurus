@@ -56,3 +56,17 @@ def deck_detail(request, pk):
 def deck_list(request):
     decks = Deck.objects.all()
     return render(request, 'deck_list.html', {'decks': decks})
+
+
+def mark_right_answer(request, flashcard_pk):
+    flashcard = get_object_or_404(Flashcard, pk=flashcard_pk)
+    flashcard.right_answers += 1
+    flashcard.save()
+    return redirect('flashcard_list')
+
+
+def mark_wrong_answer(request, flashcard_pk):
+    flashcard = get_object_or_404(Flashcard, pk=flashcard_pk)
+    flashcard.wrong_answers += 1
+    flashcard.save()
+    return redirect('flashcard_list')

@@ -15,8 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from flashcards import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +27,8 @@ urlpatterns = [
     path('flashcard/<int:pk>/edit', views.flashcard_edit, name='flashcard_edit'),
     path('deck/new', views.deck_new, name="deck_new"),
     path('deck/<int:pk>/detail', views.deck_detail, name='deck_detail'),
-    path('flashcard/list', views.flashcard_list, name="flashcard_list")
+    path('flashcard/list', views.flashcard_list, name="flashcard_list"),
+    path('flashcards/<int:flashcard_pk>/mark-right/', views.mark_right_answer, name="mark_right_answer"),
+    path('flashcards/<int:flashcard_pk>/mark-wrong/', views.mark_wrong_answer, name='mark_wrong_answer'),
+    path('accounts/', include('registration.backends.simple.urls')),
 ]

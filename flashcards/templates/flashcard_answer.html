@@ -11,6 +11,8 @@
     <div class="flashcard-box">
         <div class="flashcard-info">
             {{ flashcard.answer }}
+            <a href="{% url 'mark_right_answer' flashcard.pk %}"class="right-button" data-flashcard-id="{{ flashcard.pk }}">Right</a>
+            <a href="{% url 'mark_wrong_answer' flashcard.pk %}"class="wrong-button" data-flashcard-id="{{ flashcard.pk }}">Wrong</a>
         </div>
     </div>
 <a style="text-decoration: none" href="{% url 'flashcard_edit' flashcard.pk %}" class="button">Edit Flashcard</a>

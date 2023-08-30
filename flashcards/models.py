@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from django.contrib.auth.models import AbstractUser
 
 
 # Create your models here.
@@ -16,6 +17,12 @@ class Flashcard(models.Model):
     question = models.TextField()
     answer = models.TextField()
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE, related_name="flashcards", blank=True, null=True)
+    right_answers = models.PositiveIntegerField(default=0)
+    wrong_answers = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.question
+    
+
+class User(AbstractUser):
+    pass
