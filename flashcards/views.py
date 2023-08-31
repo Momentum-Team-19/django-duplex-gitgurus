@@ -92,3 +92,10 @@ def mark_wrong_answer(request, flashcard_pk):
     return redirect('deck_detail', pk=flashcard.deck.pk)
 
 
+def reset_deck(request, pk):
+    deck = get_object_or_404(Deck, pk=pk)
+    for flashcard in deck.flashcards.all():
+        flashcard.correct = None
+        flashcard.save()
+    return redirect('deck_detail', pk=deck.pk)
+

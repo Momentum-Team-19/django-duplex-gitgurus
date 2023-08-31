@@ -31,4 +31,5 @@ urlpatterns = [
     path('flashcards/<int:flashcard_pk>/mark-right/', views.mark_right_answer, name="mark_right_answer"),
     path('flashcards/<int:flashcard_pk>/mark-wrong/', views.mark_wrong_answer, name='mark_wrong_answer'),
     path('accounts/', include('registration.backends.simple.urls')),
+    path('deck/<int:pk>/reset', views.reset_deck, name='reset_deck'),
 ]
