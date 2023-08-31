@@ -26,6 +26,7 @@ def flashcard_new(request):
         return render(request, 'flashcard_new.html', {'form': form})
     
 
+@login_required
 def flashcard_edit(request, pk):
     flashcard = get_object_or_404(Flashcard, pk=pk)
     if request.method == "POST":
@@ -38,17 +39,22 @@ def flashcard_edit(request, pk):
     return render(request, 'flashcard_edit.html', {'form': form})
 
 
+@login_required
 def deck_new(request):
+    user = request.user
     if request.method == "POST":
         form = DeckForm(request.POST)
         if form.is_valid():
-            deck = form.save()
+            deck = form.save(commit=False)
+            deck.user = request.user
+            deck.save()
             return redirect('deck_list')
     else:
         form = DeckForm()
         return render(request, 'deck_new.html', {'form': form})
 
 
+@login_required
 def deck_detail(request, pk):
     deck = get_object_or_404(Deck, pk=pk)
     right = deck.get_score[0]
