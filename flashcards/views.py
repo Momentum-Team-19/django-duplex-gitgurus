@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Flashcard, Deck
+from .models import Flashcard, Deck, User
 from .forms import FlashcardForm, DeckForm
 from django.contrib.auth.decorators import login_required
 
@@ -65,7 +65,10 @@ def deck_detail(request, pk):
 
 @login_required
 def deck_list(request):
-    decks = Deck.objects.all()
+    user = request.user
+    print('USER', user)
+    decks = user.decks.all()
+    print('DECKS', decks)
     return render(request, 'deck_list.html', {'decks': decks})
 
 

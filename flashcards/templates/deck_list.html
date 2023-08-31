@@ -16,6 +16,8 @@
                 <a style="text-decoration: none" href="{% url 'deck_detail' deck.pk %}">{{ deck.category }}</a>
             </div>
         </li>
+        {% empty %}
+        <li>No Decks!</li>
         {% endfor %}
     </ul>
     <a style="text-decoration: none" href="{% url 'deck_new' %}" class="button">Create Deck</a>
