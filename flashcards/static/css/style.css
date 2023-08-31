@@ -56,3 +56,25 @@ h1 {
 .button:hover {
     background-color: #0056b3
 }
+
+.correct-box {
+    background-color: #f5f5f5; /* Similar background color as h1 */
+    padding: 10px; /* Smaller padding */
+    text-align: center; /* Center content horizontally */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 70px;
+    width: 50%;
+    transform: translate(50%, 50%);
+}
+
+.correct-info {
+    font-weight: bold;
+    color: #333;
+}
+
+.flashcard-info {
+    text-align: center;
+}
+
