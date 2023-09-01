@@ -15,12 +15,12 @@
             <div class="flashcard-info">
                 <a style="text-decoration: none" href="{% url 'deck_detail' deck.pk %}">{{ deck.category }}</a>
             </div>
+            <a style="text-decoration: none" href="{% url 'flashcard_new' deck.pk %}" class="button">Create Flashcard</a>
         </li>
         {% empty %}
         <li>No Decks!</li>
         {% endfor %}
     </ul>
     <a style="text-decoration: none" href="{% url 'deck_new' %}" class="button">Create Deck</a>
-<a style="text-decoration: none" href="{% url 'flashcard_new' %}" class="button">Create Flashcard</a>
 </body>
 </html>

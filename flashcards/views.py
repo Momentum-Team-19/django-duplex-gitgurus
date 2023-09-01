@@ -15,11 +15,14 @@ def flashcard_answer(request, pk):
     return render(request, 'flashcard_answer.html', {'flashcard': flashcard})
 
 
-def flashcard_new(request):
+def flashcard_new(request, deck_pk):
+    deck = get_object_or_404(Deck, pk=deck_pk)
     if request.method == "POST":
         form = FlashcardForm(request.POST)
         if form.is_valid():
-            flashcard = form.save()
+            flashcard = form.save(commit=False)
+            flashcard.deck = deck
+            flashcard.save()
             return redirect('deck_list')
     else:
         form = FlashcardForm()
